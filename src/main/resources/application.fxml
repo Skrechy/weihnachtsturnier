@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import de.haeckel.development.weihnachtsturnier.logic.player.Player?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import de.haeckel.development.weihnachtsturnier.table.FormattedTableCellFactory?>
+<?import de.haeckel.development.weihnachtsturnier.logic.player.Group?>
+<?import de.haeckel.development.weihnachtsturnier.logic.player.Gender?>
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haeckel.development.weihnachtsturnier.controller.Controller">
+  <children>
+    <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Datei">
+          <items>
+              <MenuItem mnemonicParsing="false" text="Neu" onAction="#newTable"/>
+              <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Öffnen…" onAction="#openTable"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Speichern" onAction="#saveTable"/>
+            <MenuItem mnemonicParsing="false" text="Speichern unter…" onAction="#saveTableAs"/>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Bearbeiten">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="neuer Spieler" onAction="#menuEditNewPlayer" />
+               </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <TableView fx:id="playerTable" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="playerFirstNameColumn" prefWidth="200.0" text="Vorname">
+            <cellValueFactory><PropertyValueFactory property="firstName" />
+            </cellValueFactory>
+            <cellFactory>
+              <FormattedTableCellFactory alignment="left">
+              </FormattedTableCellFactory>
+            </cellFactory>
+          </TableColumn>
+
+          <TableColumn fx:id="playerLastNameColumn" prefWidth="200.0" text="Nachname">
+            <cellValueFactory><PropertyValueFactory property="lastName" />
+            </cellValueFactory>
+            <cellFactory>
+              <FormattedTableCellFactory alignment="left">
+              </FormattedTableCellFactory>
+            </cellFactory>
+          </TableColumn>
+
+          <TableColumn fx:id="playerGenderColumn" prefWidth="80.0" text="Geschlecht">
+            <cellValueFactory><PropertyValueFactory property="gender" />
+            </cellValueFactory>
+            <cellFactory>
+              <FormattedTableCellFactory alignment="center">
+              </FormattedTableCellFactory>
+            </cellFactory>
+          </TableColumn>
+
+          <TableColumn fx:id="playerGroupColumn" prefWidth="50.0" text="Gruppe">
+            <cellValueFactory><PropertyValueFactory property="group" />
+            </cellValueFactory>
+            <cellFactory>
+              <FormattedTableCellFactory alignment="center">
+              </FormattedTableCellFactory>
+            </cellFactory>
+          </TableColumn>
+
+          <TableColumn fx:id="playerGroupColumn1" prefWidth="70.0" text="Vorgabe">
+            <cellValueFactory><PropertyValueFactory property="handicap" />
+            </cellValueFactory>
+            <cellFactory>
+              <FormattedTableCellFactory alignment="center">
+              </FormattedTableCellFactory>
+            </cellFactory>
+          </TableColumn>
+        </columns>
+
+        <items>
+          <FXCollections fx:factory="observableArrayList">
+            <Player firstName="Jacob" lastName="Smith"
+                    handicap="0" group="E" gender="M"/>
+            <Player firstName="Alexandra" lastName="Peters"
+                    handicap="6" group="J" gender="W"/>
+          </FXCollections>
+        </items>
+
+        <sortOrder>
+          <fx:reference source="playerLastNameColumn"/>
+        </sortOrder>
+      </TableView>
+
+    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Label fx:id="status" maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>
