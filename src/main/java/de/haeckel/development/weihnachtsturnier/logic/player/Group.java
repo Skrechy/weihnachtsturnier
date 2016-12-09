@@ -5,6 +5,6 @@ package de.haeckel.development.weihnachtsturnier.logic.player;
  */
 public enum Group {
     UNKNOWN,
-    ADULT,
-    YOUTH;
+    E,
+    J;
 }

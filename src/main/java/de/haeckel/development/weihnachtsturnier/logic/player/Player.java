@@ -17,6 +17,18 @@ public class Player implements Serializable{
 
     private Gender gender = Gender.UNKNOWN;
 
+    public Player (){
+
+    }
+
+    public Player(String firstName, String lastName, Group group, Gender gender, int handicap) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.group = group;
+        this.gender = gender;
+        this.handicap = handicap;
+    }
+
     public int getHandicap() {
         return handicap;
     }
